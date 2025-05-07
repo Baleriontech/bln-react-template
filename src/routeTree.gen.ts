@@ -12,12 +12,26 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as WithSearchParamsIndexImport } from './routes/with-search-params/index'
+import { Route as WithParamsIdImport } from './routes/with-params/$id'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const WithSearchParamsIndexRoute = WithSearchParamsIndexImport.update({
+  id: '/with-search-params/',
+  path: '/with-search-params/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const WithParamsIdRoute = WithParamsIdImport.update({
+  id: '/with-params/$id',
+  path: '/with-params/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -32,6 +46,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/with-params/$id': {
+      id: '/with-params/$id'
+      path: '/with-params/$id'
+      fullPath: '/with-params/$id'
+      preLoaderRoute: typeof WithParamsIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/with-search-params/': {
+      id: '/with-search-params/'
+      path: '/with-search-params'
+      fullPath: '/with-search-params'
+      preLoaderRoute: typeof WithSearchParamsIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +67,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/with-params/$id': typeof WithParamsIdRoute
+  '/with-search-params': typeof WithSearchParamsIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/with-params/$id': typeof WithParamsIdRoute
+  '/with-search-params': typeof WithSearchParamsIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/with-params/$id': typeof WithParamsIdRoute
+  '/with-search-params/': typeof WithSearchParamsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/with-params/$id' | '/with-search-params'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/with-params/$id' | '/with-search-params'
+  id: '__root__' | '/' | '/with-params/$id' | '/with-search-params/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  WithParamsIdRoute: typeof WithParamsIdRoute
+  WithSearchParamsIndexRoute: typeof WithSearchParamsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  WithParamsIdRoute: WithParamsIdRoute,
+  WithSearchParamsIndexRoute: WithSearchParamsIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +115,19 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/with-params/$id",
+        "/with-search-params/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/with-params/$id": {
+      "filePath": "with-params/$id.tsx"
+    },
+    "/with-search-params/": {
+      "filePath": "with-search-params/index.tsx"
     }
   }
 }
