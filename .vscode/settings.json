@@ -7,5 +7,80 @@
   },
   "files.readonlyInclude": {
     "**/routeTree.gen.ts": true
-  }
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.next": true,
+  },
+
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "tailwindCSS.experimental.classRegex": [
+    "twMerge\\(([^)]*)\\)",
+    "cn\\(([^)]*)\\)"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx",
+    "typescript": "tsx"
+  },
+
+  "files.autoSave": "afterDelay",
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "window.zoomLevel": 0,
+
+
+  "errorLens.enabled": true,
+  // "errorLens.fontSize": "10px",
+  "errorLens.followCursor": "closestProblem",
+  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
+  "errorLens.messageBackgroundMode": "message",
+  "errorLens.padding": "6px 1ch",
+  "errorLens.borderRadius": "0.5em",
+
+  "errorLens.messageTemplate": "$severity $message $source($code)",
+  "errorLens.severityText": [
+    "🚨",
+    "😞",
+    "🆗",
+    "📗",
+  ],
+  "errorLens.statusBarMessageEnabled": true,
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.gutterIconSet": "emoji",
+  "errorLens.gutterEmoji": {
+    "error": "🚨",
+    "warning": "😞",
+    "info": "🆗",
+    "hint": "🍏"
+  },
+  "workbench.colorCustomizations": {
+    "editorError.background": "#cb21215a",
+    "editorWarning.background": "#ee990030",
+    "editorInfo.background": "#0095d530",
+  },
 }

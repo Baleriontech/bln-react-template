@@ -32,7 +32,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn TanStack
+          Learn TanStack 
         </a>
         <Button>
           Hello button
