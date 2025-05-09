@@ -23,7 +23,7 @@ COPY package*.json ./
 COPY . .
 
 # Install dependencies using npm install instead of npm ci
-RUN npm install --legacy-peer-deps
+RUN npm ci --legacy-peer-deps
 
 # Build the application
 RUN npm run build
