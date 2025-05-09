@@ -1,4 +1,4 @@
-name: PR review for Pipeline
+name: "PR review for Pipeline :D"
 
 on:
   pull_request:
