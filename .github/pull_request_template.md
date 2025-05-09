@@ -1,11 +1,11 @@
 
 ## 📋 Checklist
-- [ ] Review your own code.
-- [ ] No console warnings/errors.
-- [ ] Not using "Any".
-- [ ] Remove unused code.
-- [ ] Smoke Test / Run Local
-- [ ] Single Type PR
+- Review your own code.
+- No console warnings/errors.
+- Not using "Any".
+- Remove unused code.
+- Smoke Test / Run Local
+- Single Type PR
 
 ## 👍 After Review
 1. Please Copy your Current URL
