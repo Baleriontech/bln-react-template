@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as WithSearchParamsIndexImport } from './routes/with-search-params/index'
+import { Route as PetsIndexImport } from './routes/pets/index'
 import { Route as WithParamsIdImport } from './routes/with-params/$id'
 
 // Create/Update Routes
@@ -26,6 +27,12 @@ const IndexRoute = IndexImport.update({
 const WithSearchParamsIndexRoute = WithSearchParamsIndexImport.update({
   id: '/with-search-params/',
   path: '/with-search-params/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PetsIndexRoute = PetsIndexImport.update({
+  id: '/pets/',
+  path: '/pets/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -53,6 +60,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WithParamsIdImport
       parentRoute: typeof rootRoute
     }
+    '/pets/': {
+      id: '/pets/'
+      path: '/pets'
+      fullPath: '/pets'
+      preLoaderRoute: typeof PetsIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/with-search-params/': {
       id: '/with-search-params/'
       path: '/with-search-params'
@@ -68,12 +82,14 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/with-params/$id': typeof WithParamsIdRoute
+  '/pets': typeof PetsIndexRoute
   '/with-search-params': typeof WithSearchParamsIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/with-params/$id': typeof WithParamsIdRoute
+  '/pets': typeof PetsIndexRoute
   '/with-search-params': typeof WithSearchParamsIndexRoute
 }
 
@@ -81,27 +97,30 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/with-params/$id': typeof WithParamsIdRoute
+  '/pets/': typeof PetsIndexRoute
   '/with-search-params/': typeof WithSearchParamsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/with-params/$id' | '/with-search-params'
+  fullPaths: '/' | '/with-params/$id' | '/pets' | '/with-search-params'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/with-params/$id' | '/with-search-params'
-  id: '__root__' | '/' | '/with-params/$id' | '/with-search-params/'
+  to: '/' | '/with-params/$id' | '/pets' | '/with-search-params'
+  id: '__root__' | '/' | '/with-params/$id' | '/pets/' | '/with-search-params/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   WithParamsIdRoute: typeof WithParamsIdRoute
+  PetsIndexRoute: typeof PetsIndexRoute
   WithSearchParamsIndexRoute: typeof WithSearchParamsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   WithParamsIdRoute: WithParamsIdRoute,
+  PetsIndexRoute: PetsIndexRoute,
   WithSearchParamsIndexRoute: WithSearchParamsIndexRoute,
 }
 
@@ -117,6 +136,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/with-params/$id",
+        "/pets/",
         "/with-search-params/"
       ]
     },
@@ -125,6 +145,9 @@ export const routeTree = rootRoute
     },
     "/with-params/$id": {
       "filePath": "with-params/$id.tsx"
+    },
+    "/pets/": {
+      "filePath": "pets/index.tsx"
     },
     "/with-search-params/": {
       "filePath": "with-search-params/index.tsx"

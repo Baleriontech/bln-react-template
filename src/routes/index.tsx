@@ -28,6 +28,12 @@ function HomePage() {
           >
             Page with Search Params
           </Link>
+          <Link
+            to="/pets"
+            className="bg-white text-[#282c34] px-2 py-1 rounded-lg text-xl hover:bg-black hover:text-white transition-colors duration-300"
+          >
+            Example with React Query
+          </Link>
         </div>
       </header>
     </div>
