@@ -9,6 +9,4 @@ const axiosInstance = axios.create({
   },
 })
 
-axiosInstance.interceptors.request
-
 export default axiosInstance
