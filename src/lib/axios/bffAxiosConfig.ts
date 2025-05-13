@@ -3,7 +3,7 @@ import bffConfig from '@/configs/bffConfig'
 
 const bffAxios = axios.create({
   baseURL: bffConfig.BFF_BASE_API_URL,
-  timeout: 5000,
+  timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
