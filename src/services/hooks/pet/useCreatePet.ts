@@ -1,14 +1,14 @@
+import { mapCreatePetSchemaToRequest } from '@/services/mappers/requests/petRequestMapper'
+import type { TCreatePet } from '@/utils/validations/petValidation'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import petQueryKey from './petQueryKey'
-import type { CreatePetType } from '@/utils/validations/petValidation'
-import { mapCreatePetSchemaToRequest } from '@/services/mappers/requests/petRequestMapper'
 
 const useCreatePet = () => {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: async (newPet: CreatePetType) => {
+    mutationFn: async (newPet: TCreatePet) => {
       const request = mapCreatePetSchemaToRequest(newPet)
 
       const response = await axios.post(

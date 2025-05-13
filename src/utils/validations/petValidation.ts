@@ -7,4 +7,4 @@ export const CreatePetSchema = z.object({
     .min(new Date(0), { message: 'Date of birth is required' }),
 })
 
-export type CreatePetType = z.infer<typeof CreatePetSchema>
+export type TCreatePet = z.infer<typeof CreatePetSchema>

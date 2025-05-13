@@ -1,8 +1,8 @@
-export type PetResponse = {
+export type TPetResponse = {
   id: string
   name: string
   date_of_birth: Date
   created_at: Date
 }
 
-export type ListAllPetsResponse = Array<PetResponse>
+export type TListAllPetsResponse = Array<TPetResponse>

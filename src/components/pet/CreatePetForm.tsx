@@ -1,16 +1,5 @@
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { format } from 'date-fns'
-import { CalendarIcon } from 'lucide-react'
-import { useEffect } from 'react'
-import type { CreatePetType } from '@/utils/validations/petValidation'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
-import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
 import {
   Form,
   FormControl,
@@ -19,25 +8,36 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { Calendar } from '@/components/ui/calendar'
-import { CreatePetSchema } from '@/utils/validations/petValidation'
+import { Input } from '@/components/ui/input'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
+import type { TCreatePet } from '@/utils/validations/petValidation'
+import { CreatePetSchema } from '@/utils/validations/petValidation'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { format } from 'date-fns'
+import { CalendarIcon } from 'lucide-react'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 
-export interface CreatePetFormProps {
-  onSubmit: (data: CreatePetType) => void
+export interface ICreatePetFormProps {
+  onSubmit: (data: TCreatePet) => void
   isLoading: boolean
 }
 
 export default function CreatePetForm({
   onSubmit,
   isLoading,
-}: CreatePetFormProps) {
-  const form = useForm<CreatePetType>({
+}: ICreatePetFormProps) {
+  const form = useForm<TCreatePet>({
     resolver: zodResolver(CreatePetSchema),
     defaultValues: {
       name: '',
       dateOfBirth: undefined,
-    }
+    },
   })
 
   useEffect(() => {

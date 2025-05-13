@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import type { CreatePetType } from '@/utils/validations/petValidation'
+import type { TCreatePet } from '@/utils/validations/petValidation'
 import CreatePetForm from '@/components/pet/CreatePetForm'
 import PetsList from '@/components/pet/PetsList'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -11,7 +11,7 @@ export const Route = createFileRoute('/pets/')({
 
 function PetsPage() {
   const { mutateAsync, isPending } = useCreatePet()
-  const onSubmit = async (data: CreatePetType) => {
+  const onSubmit = async (data: TCreatePet) => {
     try {
       await mutateAsync(data)
     } catch (error) {
