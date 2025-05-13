@@ -2,11 +2,7 @@ name: "PR review for Pipeline :D"
 
 on:
   pull_request:
-    branches:
-      - develop
-      - uat
-      - prd
-      - sit
+    branches: "*"
     types:
       - opened
       - synchronize
