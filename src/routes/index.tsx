@@ -1,42 +1,39 @@
-import { createFileRoute } from '@tanstack/react-router'
-import logo from '../logo.svg'
-import { Button } from '@/components/ui/button'
+import { Link, createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
-  component: App,
+  component: HomePage,
 })
 
-function App() {
+function HomePage() {
   return (
     <div className="text-center">
       <header className="min-h-screen flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]">
-        <img
-          src={logo}
-          className="h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]"
-          alt="logo"
-        />
-        <p>
-          Edit <code>src/routes/index.tsx</code> and save to reload.
-        </p>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://tanstack.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn TanStack 
-        </a>
-        <Button>
-          Hello button
-        </Button>
+        <div className="text-9xl">Balerion</div>
+        <div className="grid gap-2 my-4">
+          <Link
+            to="/with-params/$id"
+            params={{ id: '1' }}
+            className="bg-white text-[#282c34] px-2 py-1 rounded-lg text-xl hover:bg-black hover:text-white transition-colors duration-300"
+          >
+            Page with Path Params
+          </Link>
+          <Link
+            to="/with-search-params"
+            search={{
+              page: 1,
+              limit: 20,
+            }}
+            className="bg-white text-[#282c34] px-2 py-1 rounded-lg text-xl hover:bg-black hover:text-white transition-colors duration-300"
+          >
+            Page with Search Params
+          </Link>
+          <Link
+            to="/pets"
+            className="bg-white text-[#282c34] px-2 py-1 rounded-lg text-xl hover:bg-black hover:text-white transition-colors duration-300"
+          >
+            Example with React Query
+          </Link>
+        </div>
       </header>
     </div>
   )
