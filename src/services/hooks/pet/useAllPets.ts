@@ -1,3 +1,4 @@
+import bffAxios from '@/lib/axios/bffAxiosConfig'
 import { mapPetResponseToModel } from '@/services/mappers/responses/petResponseMapper'
 import type { Pet } from '@/types/models/Pet'
 import type { TListAllPetsResponse } from '@/types/responses/petResponse'
@@ -10,12 +11,11 @@ const useAllPets = () => {
     queryKey: petQueryKey.all,
     queryFn: async (): Promise<Array<Pet>> => {
       try {
-        const response = await axios.get<TListAllPetsResponse>(
-          'https://681dcbeec1c291fa6631b60d.mockapi.io/api/v1/pets',
-        )
+        const response =
+          await bffAxios.get<TListAllPetsResponse>('/api/v1/pets')
 
         const pets = response.data.map((pet) => mapPetResponseToModel(pet))
-
+        axios
         return pets
       } catch (error) {
         console.error('Error fetching pets:', error)
