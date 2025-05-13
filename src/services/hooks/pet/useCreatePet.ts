@@ -1,19 +1,29 @@
-import bffAxios from '@/lib/axios/bffAxiosConfig'
-import { mapCreatePetSchemaToRequest } from '@/services/mappers/requests/petRequestMapper'
-import type { TCreatePet } from '@/utils/validations/petValidation'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import petQueryKey from './petQueryKey'
+import type { TPetResponse } from '@/types/responses/petResponse'
+import type { TCreatePet } from '@/utils/validations/petValidation'
+import bffAxios from '@/lib/axios/bffAxiosConfig'
+import { mapCreatePetSchemaToRequest } from '@/services/mappers/requests/petRequestMapper'
+import { mapPetResponseToModel } from '@/services/mappers/responses/petResponseMapper'
 
 const useCreatePet = () => {
   const queryClient = useQueryClient()
 
   return useMutation({
     mutationFn: async (newPet: TCreatePet) => {
-      const request = mapCreatePetSchemaToRequest(newPet)
+      try {
+        const request = mapCreatePetSchemaToRequest(newPet)
 
-      const response = await bffAxios.post('/api/v1/pets', request)
+        const response = await bffAxios.post<TPetResponse>(
+          '/api/v1/pets',
+          request,
+        )
 
-      return response.data
+        return mapPetResponseToModel(response.data)
+      } catch (error) {
+        console.error('Error creating pet:', error)
+        throw new Error('Failed to create pet')
+      }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({

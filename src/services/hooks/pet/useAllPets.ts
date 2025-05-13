@@ -1,10 +1,9 @@
-import bffAxios from '@/lib/axios/bffAxiosConfig'
-import { mapPetResponseToModel } from '@/services/mappers/responses/petResponseMapper'
-import type { Pet } from '@/types/models/Pet'
-import type { TListAllPetsResponse } from '@/types/responses/petResponse'
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
 import petQueryKey from './petQueryKey'
+import type { TListAllPetsResponse } from '@/types/responses/petResponse'
+import type { Pet } from '@/types/models/Pet'
+import bffAxios from '@/lib/axios/bffAxiosConfig'
+import { mapListAllPetsResponseToModel } from '@/services/mappers/responses/petResponseMapper'
 
 const useAllPets = () => {
   return useQuery({
@@ -14,9 +13,7 @@ const useAllPets = () => {
         const response =
           await bffAxios.get<TListAllPetsResponse>('/api/v1/pets')
 
-        const pets = response.data.map((pet) => mapPetResponseToModel(pet))
-        axios
-        return pets
+        return mapListAllPetsResponseToModel(response.data)
       } catch (error) {
         console.error('Error fetching pets:', error)
         throw new Error('Failed to fetch pets')
