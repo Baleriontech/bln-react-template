@@ -5,12 +5,11 @@ const config = {
   arrowParens: 'always',
   bracketSpacing: true,
   singleAttributePerLine: true,
-  jsxBracketSameLine: false,
   bracketSameLine: false,
   semi: false,
   singleQuote: true,
   trailingComma: 'es5',
-  printWidth: 150,
+  printWidth: 100,
 }
 
 export default config
