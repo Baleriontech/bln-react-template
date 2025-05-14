@@ -15,9 +15,7 @@ export default function PetsList() {
         <Card key={pet.id}>
           <CardContent>
             <h2 className="text-xl font-bold">{pet.name}</h2>
-            <p>
-              Date of Birth: {new Date(pet.dateOfBirth).toLocaleDateString()}
-            </p>
+            <p>Date of Birth: {new Date(pet.dateOfBirth).toLocaleDateString()}</p>
             <p>Created At: {new Date(pet.createdAt).toLocaleString()}</p>
           </CardContent>
         </Card>

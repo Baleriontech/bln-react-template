@@ -2,9 +2,7 @@ import { z } from 'zod'
 
 export const CreatePetSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
-  dateOfBirth: z
-    .date()
-    .min(new Date(0), { message: 'Date of birth is required' }),
+  dateOfBirth: z.date().min(new Date(0), { message: 'Date of birth is required' }),
 })
 
 export type TCreatePet = z.infer<typeof CreatePetSchema>

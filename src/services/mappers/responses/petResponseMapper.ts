@@ -10,8 +10,6 @@ export const mapPetResponseToModel = (petResponse: TPetResponse): Pet => {
   }
 }
 
-export const mapListAllPetsResponseToModel = (
-  petsResponse: Array<TPetResponse>,
-): Array<Pet> => {
+export const mapListAllPetsResponseToModel = (petsResponse: Array<TPetResponse>): Array<Pet> => {
   return petsResponse.map((pet) => mapPetResponseToModel(pet))
 }

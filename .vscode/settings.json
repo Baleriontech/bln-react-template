@@ -13,7 +13,7 @@
     "**/.DS_Store": true,
     "**/node_modules": true,
     "**/dist": true,
-    "**/.next": true,
+    "**/.next": true
   },
 
   "editor.formatOnSave": true,
@@ -22,18 +22,11 @@
     "source.fixAll.eslint": "explicit"
   },
   // "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.validate": [
-    "javascript",
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
-  "tailwindCSS.experimental.classRegex": [
-    "twMerge\\(([^)]*)\\)",
-    "cn\\(([^)]*)\\)"
-  ],
+  "tailwindCSS.experimental.classRegex": ["twMerge\\(([^)]*)\\)", "cn\\(([^)]*)\\)"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.preferences.importModuleSpecifier": "non-relative",
@@ -53,7 +46,6 @@
   "terminal.integrated.defaultProfile.osx": "zsh",
   "window.zoomLevel": 0,
 
-
   "errorLens.enabled": true,
   // "errorLens.fontSize": "10px",
   "errorLens.followCursor": "closestProblem",
@@ -63,12 +55,7 @@
   "errorLens.borderRadius": "0.5em",
 
   "errorLens.messageTemplate": "$severity $message $source($code)",
-  "errorLens.severityText": [
-    "🚨",
-    "😞",
-    "🆗",
-    "📗",
-  ],
+  "errorLens.severityText": ["🚨", "😞", "🆗", "📗"],
   "errorLens.statusBarMessageEnabled": true,
   "errorLens.gutterIconsEnabled": true,
   "errorLens.gutterIconSet": "emoji",
@@ -112,5 +99,21 @@
       "borderRadius": 2,
       "styleMode": "full"
     },
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

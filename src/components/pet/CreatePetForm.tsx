@@ -9,11 +9,7 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 import type { TCreatePet } from '@/utils/validations/petValidation'
 import { CreatePetSchema } from '@/utils/validations/petValidation'
@@ -28,10 +24,7 @@ export interface ICreatePetFormProps {
   isLoading: boolean
 }
 
-export default function CreatePetForm({
-  onSubmit,
-  isLoading,
-}: ICreatePetFormProps) {
+export default function CreatePetForm({ onSubmit, isLoading }: ICreatePetFormProps) {
   const form = useForm<TCreatePet>({
     resolver: zodResolver(CreatePetSchema),
     defaultValues: {
@@ -46,7 +39,10 @@ export default function CreatePetForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-4"
+      >
         <FormField
           control={form.control}
           name="name"
@@ -54,7 +50,10 @@ export default function CreatePetForm({
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="Name" {...field} />
+                <Input
+                  placeholder="Name"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -71,27 +70,22 @@ export default function CreatePetForm({
                   <FormControl>
                     <Button
                       variant={'outline'}
-                      className={cn(
-                        'w-[240px] pl-3 text-left font-normal text-muted-foreground',
-                      )}
+                      className={cn('w-[240px] pl-3 text-left font-normal text-muted-foreground')}
                     >
-                      {field.value ? (
-                        format(field.value, 'PPP')
-                      ) : (
-                        <span>Pick a date</span>
-                      )}
+                      {field.value ? format(field.value, 'PPP') : <span>Pick a date</span>}
                       <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
+                <PopoverContent
+                  className="w-auto p-0"
+                  align="start"
+                >
                   <Calendar
                     mode="single"
                     selected={field.value}
                     onSelect={field.onChange}
-                    disabled={(date) =>
-                      date > new Date() || date < new Date('1900-01-01')
-                    }
+                    disabled={(date) => date > new Date() || date < new Date('1900-01-01')}
                     initialFocus
                   />
                 </PopoverContent>

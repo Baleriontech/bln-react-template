@@ -27,7 +27,10 @@ function PetsPage() {
             <CardTitle>Create new pet</CardTitle>
           </CardHeader>
           <CardContent>
-            <CreatePetForm onSubmit={onSubmit} isLoading={isPending} />
+            <CreatePetForm
+              onSubmit={onSubmit}
+              isLoading={isPending}
+            />
           </CardContent>
         </Card>
       </div>
