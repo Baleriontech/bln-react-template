@@ -96,7 +96,6 @@
       "highlightColor": "#3ea8ff",
       "backgroundColor": "#3ea8ff20",
       "borderRadius": 2,
-      "textDecorationStyle": "padding: 10px;",
       "styleMode": "full"
     },
     "FIXME" : {
@@ -104,7 +103,6 @@
       "highlightColor": "#F44336",
       "backgroundColor": "#F4433620",
       "borderRadius": 2,
-      "textDecorationStyle": "padding: 10px;",
       "styleMode": "full"
     },
     "NOTE" : {
@@ -112,7 +110,6 @@
       "highlightColor": "#00cec9",
       "backgroundColor": "#00cec920",
       "borderRadius": 2,
-      "textDecorationStyle": "padding: 10px;",
       "styleMode": "full"
     },
   }
