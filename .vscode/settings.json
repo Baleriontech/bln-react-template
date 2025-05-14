@@ -83,4 +83,37 @@
     "editorWarning.background": "#ee990030",
     "editorInfo.background": "#0095d530",
   },
+  "commentAnchors.tags.anchors": {
+    "ANCHOR": {
+      "scope": "workspace",
+      "highlightColor": "#f4d13d",
+      "backgroundColor": "#f4d13d20",
+      "borderRadius": 2,
+      "styleMode": "full"
+    },
+    "TODO" : {
+      "scope": "workspace",
+      "highlightColor": "#3ea8ff",
+      "backgroundColor": "#3ea8ff20",
+      "borderRadius": 2,
+      "textDecorationStyle": "padding: 10px;",
+      "styleMode": "full"
+    },
+    "FIXME" : {
+      "scope": "workspace",
+      "highlightColor": "#F44336",
+      "backgroundColor": "#F4433620",
+      "borderRadius": 2,
+      "textDecorationStyle": "padding: 10px;",
+      "styleMode": "full"
+    },
+    "NOTE" : {
+      "scope": "workspace",
+      "highlightColor": "#00cec9",
+      "backgroundColor": "#00cec920",
+      "borderRadius": 2,
+      "textDecorationStyle": "padding: 10px;",
+      "styleMode": "full"
+    },
+  }
 }
