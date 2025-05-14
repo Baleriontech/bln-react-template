@@ -10,8 +10,7 @@ const useAllPets = () => {
     queryKey: petQueryKey.all,
     queryFn: async (): Promise<Array<Pet>> => {
       try {
-        const response =
-          await bffAxios.get<TListAllPetsResponse>('/api/v1/pets')
+        const response = await bffAxios.get<TListAllPetsResponse>('/api/v1/pets')
 
         return mapListAllPetsResponseToModel(response.data)
       } catch (error) {

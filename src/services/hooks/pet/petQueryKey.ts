@@ -1,6 +1,6 @@
 const petQueryKey = {
-    all: ['Pets'], 
-    detail: (petId: string) => [...petQueryKey.all, petId],
+  all: ['Pets'],
+  detail: (petId: string) => [...petQueryKey.all, petId],
 }
 
-export default petQueryKey;
+export default petQueryKey

@@ -1,5 +1,5 @@
-
 ## 📋 Checklist
+
 - Review your own code.
 - No console warnings/errors.
 - Not using "Any".
@@ -8,5 +8,6 @@
 - Single Type PR
 
 ## 👍 After Review
+
 1. Please Copy your Current URL
 2. Go to [PR Template](https://prtemplateindex.z8.web.core.windows.net/)

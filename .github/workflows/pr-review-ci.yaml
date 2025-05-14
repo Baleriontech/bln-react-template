@@ -1,4 +1,4 @@
-name: "PR review for Pipeline :D"
+name: 'PR review for Pipeline :D'
 
 on:
   pull_request:
@@ -42,16 +42,16 @@ jobs:
       - name: AI Code Review
         uses: Baleriontech/github-action-lib/ai-code-review@main
         with:
-            azure-openai-endpoint: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
-            azure-openai-api-key: ${{ secrets.AZURE_OPENAI_API_KEY }}
-            pr-number: ${{ github.event.pull_request.number }}
+          azure-openai-endpoint: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          azure-openai-api-key: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          pr-number: ${{ github.event.pull_request.number }}
 
   notify-complete:
     name: Notify CI Completion
     runs-on: ubuntu-latest
     #TODO - Add a condition to check if the job is cancelled
     needs: [notify-start, code-review]
-    if: always()  # Run even if previous jobs fail
+    if: always() # Run even if previous jobs fail
     steps:
       - uses: actions/checkout@v3
 

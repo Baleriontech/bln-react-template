@@ -14,10 +14,7 @@ const useCreatePet = () => {
       try {
         const request = mapCreatePetSchemaToRequest(newPet)
 
-        const response = await bffAxios.post<TPetResponse>(
-          '/api/v1/pets',
-          request,
-        )
+        const response = await bffAxios.post<TPetResponse>('/api/v1/pets', request)
 
         return mapPetResponseToModel(response.data)
       } catch (error) {
