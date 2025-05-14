@@ -53,4 +53,15 @@ export default [
       'prettier/prettier': ['error', prettierConfig],
     },
   },
+
+  {
+    ignores: [
+      'dist/**',
+      'coverage/**',
+      'node_modules/**',
+      'public/**',
+      'package-lock.json',
+      'bun.lock',
+    ],
+  },
 ]
