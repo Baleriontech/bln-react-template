@@ -1,9 +1,9 @@
-import { useQuery } from '@tanstack/react-query'
-import petQueryKey from './petQueryKey'
-import type { TListAllPetsResponse } from '@/types/responses/petResponse'
-import type { Pet } from '@/types/models/Pet'
 import bffAxios from '@/lib/axios/bffAxiosConfig'
 import { mapListAllPetsResponseToModel } from '@/services/mappers/responses/petResponseMapper'
+import type { Pet } from '@/types/models/Pet'
+import type { TListAllPetsResponse } from '@/types/responses/petResponse'
+import { useQuery } from '@tanstack/react-query'
+import petQueryKey from './petQueryKey'
 
 const useAllPets = () => {
   return useQuery({
