@@ -1,8 +1,9 @@
 export type TPetResponse = {
   id: string
   name: string
-  date_of_birth: Date
-  created_at: Date
+  price: string
+  date_of_birth: string
+  created_at: string
 }
 
 export type TListAllPetsResponse = Array<TPetResponse>
