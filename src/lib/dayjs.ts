@@ -9,8 +9,6 @@ dayjs.extend(timezone);
 dayjs.extend(relativeTime);
 dayjs.extend(customParseFormat)
 
-// dayjs.tz("Asia/Bangkok")
-// set default timezone
 dayjs.tz.setDefault("Asia/Bangkok");
 
 export default dayjs;

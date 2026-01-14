@@ -30,8 +30,7 @@ const PetCard: React.FC<Pet> = ({ ...pet }) => {
         <p>Spicie: </p>
         <p>Date of Birth: {pet.dateOfBirth.format('DD MMM YYYY').toString()}</p>
         <p>Price {pet.price.plus(PriceDecimal(0.025)).toDecimalPlaces(2).toString()} Bath</p>
-
-        <p>Created At: {pet?.createdAt?.fromNow()}</p>
+        <p>Created At: {pet.createdAt.fromNow()}</p>
       </div>
     </CardContent>
   </>)

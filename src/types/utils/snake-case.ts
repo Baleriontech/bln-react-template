@@ -7,8 +7,7 @@ export type SnakeCase<S extends string> =
   : `${Lowercase<A>}${SnakeCase<`${B}${Rest}`>}`
   : Lowercase<S>;
 
-export type SnakeCaseKey<K extends PropertyKey> =
-  K extends string ? SnakeCase<K> : K;
+export type SnakeCaseKey<K extends PropertyKey> = K extends string ? SnakeCase<K> : K;
 
 export type SnakeCaseDeep<T> =
   T extends readonly (infer U)[]

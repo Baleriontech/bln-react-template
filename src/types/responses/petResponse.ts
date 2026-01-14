@@ -1,9 +1,6 @@
-export type TPetResponse = {
-  id: string
-  name: string
-  price: string
-  date_of_birth: string
-  created_at: string
-}
+import type { Pet } from "@/types/models/Pet"
+import type { ApiSerializeAuto } from "@/types/utils/api"
+
+export type TPetResponse = ApiSerializeAuto<Pet>
 
 export type TListAllPetsResponse = Array<TPetResponse>

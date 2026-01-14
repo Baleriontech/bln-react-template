@@ -2,11 +2,11 @@ import type { Dayjs } from "dayjs"
 import type { PriceDecimal } from "@/lib/decimal"
 import type { ReplaceKeysWith, StringKeys } from "@/types/utils/keys"
 import type { SnakeCase, SnakeCaseDeep } from "@/types/utils/snake-case"
-
+import type { Prettify } from "@/types/utils/prettify"
 
 export type ApiSerializedType = PriceDecimal | Dayjs
 
-export type ApiSerializeShape<Model, K extends keyof SnakeCaseDeep<Model>, T= string> = ReplaceKeysWith<SnakeCaseDeep<Model>, K, T>
+export type ApiSerializeShape<Model, K extends keyof SnakeCaseDeep<Model>, T= string> = Prettify<ReplaceKeysWith<SnakeCaseDeep<Model>, K, T>>
 
 type AutoSerializedKeys<Model> = Extract<
   {
@@ -19,8 +19,10 @@ type AutoSerializedKeys<Model> = Extract<
 >
 
 export type ApiSerializeAuto<Model, T = string> =
-  ReplaceKeysWith<
-    SnakeCaseDeep<Model>,
-    AutoSerializedKeys<Model>,
-    T
+  Prettify<
+    ReplaceKeysWith<
+      SnakeCaseDeep<Model>,
+      AutoSerializedKeys<Model>,
+      T
+    >
   >

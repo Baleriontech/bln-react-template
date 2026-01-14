@@ -1,8 +1,8 @@
 import { mapListAllPetsResponseToModel } from '@/services/mappers/responses/petResponseMapper'
 import type { Pet } from '@/types/models/Pet'
-import type { TListAllPetsResponse } from '@/types/responses/petResponse'
 import { useQuery } from '@tanstack/react-query'
 import petQueryKey from './petQueryKey'
+import type { TListAllPetsResponse } from '@/types/responses/petResponse'
 
 const useAllPets = () => {
   return useQuery({
@@ -27,7 +27,7 @@ const useAllPets = () => {
             date_of_birth: '2025-10-04T16:00:00.000Z',
             created_at: '2025-04-04T16:00:00.000Z'
           },
-        ] as TListAllPetsResponse
+        ] as  TListAllPetsResponse
         }
         return mapListAllPetsResponseToModel(response.data)
       } catch (error) {
