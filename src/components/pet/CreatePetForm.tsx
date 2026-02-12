@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import Button from '@bln-design-system/button'
 import { Calendar } from '@/components/ui/calendar'
 import {
   Form,
@@ -69,8 +69,8 @@ export default function CreatePetForm({ onSubmit, isLoading }: ICreatePetFormPro
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
-                      variant={'outline'}
-                      className={cn('w-[240px] pl-3 text-left font-normal text-muted-foreground')}
+                      variant="outlined"
+                      className={cn('w-60 pl-3 text-left font-normal text-muted-foreground flex items-center')}
                     >
                       {field.value ? format(field.value, 'PPP') : <span>Pick a date</span>}
                       <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
@@ -86,7 +86,6 @@ export default function CreatePetForm({ onSubmit, isLoading }: ICreatePetFormPro
                     selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) => date > new Date() || date < new Date('1900-01-01')}
-                    initialFocus
                   />
                 </PopoverContent>
               </Popover>

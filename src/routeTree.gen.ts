@@ -38,8 +38,8 @@ const WithParamsIdRoute = WithParamsIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/with-params/$id': typeof WithParamsIdRoute
-  '/pets': typeof PetsIndexRoute
-  '/with-search-params': typeof WithSearchParamsIndexRoute
+  '/pets/': typeof PetsIndexRoute
+  '/with-search-params/': typeof WithSearchParamsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -56,7 +56,7 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/with-params/$id' | '/pets' | '/with-search-params'
+  fullPaths: '/' | '/with-params/$id' | '/pets/' | '/with-search-params/'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/with-params/$id' | '/pets' | '/with-search-params'
   id: '__root__' | '/' | '/with-params/$id' | '/pets/' | '/with-search-params/'
@@ -81,14 +81,14 @@ declare module '@tanstack/react-router' {
     '/with-search-params/': {
       id: '/with-search-params/'
       path: '/with-search-params'
-      fullPath: '/with-search-params'
+      fullPath: '/with-search-params/'
       preLoaderRoute: typeof WithSearchParamsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pets/': {
       id: '/pets/'
       path: '/pets'
-      fullPath: '/pets'
+      fullPath: '/pets/'
       preLoaderRoute: typeof PetsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }

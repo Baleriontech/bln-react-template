@@ -1,9 +1,8 @@
-import type { Dayjs } from "dayjs";
-
+import type { CustomDayjs } from "@/lib/dayjs";
 
 export interface Log {
-  createdAt: Dayjs
+  createdAt: CustomDayjs
   createdBy: string
-  updatedAt: Dayjs
+  updatedAt: CustomDayjs
   updatedBy: string
 }

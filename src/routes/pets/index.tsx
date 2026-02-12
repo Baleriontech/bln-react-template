@@ -18,7 +18,6 @@ function PetsPage() {
     }
   }
 
-
   return (
     <div className="p-4">
       <div className="flex flex-col  w-full h-full">

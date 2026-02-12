@@ -5,14 +5,14 @@ import { mapToPriceDecimal } from "@/services/mappers/utils/decimal"
 export const mapTo = <
   CustomType,
   T,
-  U extends readonly (keyof T)[],
-  V extends Omit<T, U[number]> & { [K in U[number]]: CustomType }
+  ChangeKeys extends readonly (keyof T)[],
+  Transformed extends Omit<T, ChangeKeys[number]> & { [K in ChangeKeys[number]]: CustomType }
 >({ obj, keys, tranformeFn }: {
   obj: T,
-  keys?: U,
-  tranformeFn: (value: V[keyof T]) => CustomType
-}): V => {
-  let transformed = { ...obj } as unknown as V
+  keys?: ChangeKeys,
+  tranformeFn: (value: Transformed[keyof T]) => CustomType
+}): Transformed => {
+  let transformed = { ...obj } as unknown as Transformed
   keys?.forEach((key) => {
     const value = transformed[key]
     transformed = {
@@ -38,5 +38,3 @@ export const mapToModel = <
     , config?.PriceDecimal ?? []
   ) as Model
 }
-
-

@@ -11,5 +11,5 @@ dayjs.extend(customParseFormat)
 
 dayjs.tz.setDefault("Asia/Bangkok");
 
-export default dayjs;
-export type { Dayjs } from "dayjs";
+export { dayjs as customDayjs };
+export type { Dayjs as CustomDayjs } from "dayjs";
