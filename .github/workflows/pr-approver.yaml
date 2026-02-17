@@ -1,0 +1,19 @@
+name: Check PR Approval
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  check-approval:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check PR Approval and Notify
+        uses: Baleriontech/github-action-lib/pr-merged-without-approval@main
+        with:
+          slack-webhook-url: ${{ secrets.HELEN_SLACK_WEBHOOK_URL }}
