@@ -35,5 +35,4 @@ dist-ssr
 !.env.example
 
 
-*-lock.yaml
 *-lock.json

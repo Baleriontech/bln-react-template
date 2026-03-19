@@ -8,41 +8,66 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-// Import Routes
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as WithSearchParamsIndexRouteImport } from './routes/with-search-params/index'
+import { Route as PetsIndexRouteImport } from './routes/pets/index'
+import { Route as WithParamsIdRouteImport } from './routes/with-params/$id'
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as IndexImport } from './routes/index'
-import { Route as WithSearchParamsIndexImport } from './routes/with-search-params/index'
-import { Route as PetsIndexImport } from './routes/pets/index'
-import { Route as WithParamsIdImport } from './routes/with-params/$id'
-
-// Create/Update Routes
-
-const IndexRoute = IndexImport.update({
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const WithSearchParamsIndexRoute = WithSearchParamsIndexImport.update({
+const WithSearchParamsIndexRoute = WithSearchParamsIndexRouteImport.update({
   id: '/with-search-params/',
   path: '/with-search-params/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const PetsIndexRoute = PetsIndexImport.update({
+const PetsIndexRoute = PetsIndexRouteImport.update({
   id: '/pets/',
   path: '/pets/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const WithParamsIdRoute = WithParamsIdImport.update({
+const WithParamsIdRoute = WithParamsIdRouteImport.update({
   id: '/with-params/$id',
   path: '/with-params/$id',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
 
-// Populate the FileRoutesByPath interface
+export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
+  '/with-params/$id': typeof WithParamsIdRoute
+  '/pets/': typeof PetsIndexRoute
+  '/with-search-params/': typeof WithSearchParamsIndexRoute
+}
+export interface FileRoutesByTo {
+  '/': typeof IndexRoute
+  '/with-params/$id': typeof WithParamsIdRoute
+  '/pets': typeof PetsIndexRoute
+  '/with-search-params': typeof WithSearchParamsIndexRoute
+}
+export interface FileRoutesById {
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/with-params/$id': typeof WithParamsIdRoute
+  '/pets/': typeof PetsIndexRoute
+  '/with-search-params/': typeof WithSearchParamsIndexRoute
+}
+export interface FileRouteTypes {
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/with-params/$id' | '/pets/' | '/with-search-params/'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/with-params/$id' | '/pets' | '/with-search-params'
+  id: '__root__' | '/' | '/with-params/$id' | '/pets/' | '/with-search-params/'
+  fileRoutesById: FileRoutesById
+}
+export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
+  WithParamsIdRoute: typeof WithParamsIdRoute
+  PetsIndexRoute: typeof PetsIndexRoute
+  WithSearchParamsIndexRoute: typeof WithSearchParamsIndexRoute
+}
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
@@ -50,71 +75,31 @@ declare module '@tanstack/react-router' {
       id: '/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/with-search-params/': {
+      id: '/with-search-params/'
+      path: '/with-search-params'
+      fullPath: '/with-search-params/'
+      preLoaderRoute: typeof WithSearchParamsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pets/': {
+      id: '/pets/'
+      path: '/pets'
+      fullPath: '/pets/'
+      preLoaderRoute: typeof PetsIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/with-params/$id': {
       id: '/with-params/$id'
       path: '/with-params/$id'
       fullPath: '/with-params/$id'
-      preLoaderRoute: typeof WithParamsIdImport
-      parentRoute: typeof rootRoute
-    }
-    '/pets/': {
-      id: '/pets/'
-      path: '/pets'
-      fullPath: '/pets'
-      preLoaderRoute: typeof PetsIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/with-search-params/': {
-      id: '/with-search-params/'
-      path: '/with-search-params'
-      fullPath: '/with-search-params'
-      preLoaderRoute: typeof WithSearchParamsIndexImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof WithParamsIdRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
-}
-
-// Create and export the route tree
-
-export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/with-params/$id': typeof WithParamsIdRoute
-  '/pets': typeof PetsIndexRoute
-  '/with-search-params': typeof WithSearchParamsIndexRoute
-}
-
-export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/with-params/$id': typeof WithParamsIdRoute
-  '/pets': typeof PetsIndexRoute
-  '/with-search-params': typeof WithSearchParamsIndexRoute
-}
-
-export interface FileRoutesById {
-  __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/with-params/$id': typeof WithParamsIdRoute
-  '/pets/': typeof PetsIndexRoute
-  '/with-search-params/': typeof WithSearchParamsIndexRoute
-}
-
-export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/with-params/$id' | '/pets' | '/with-search-params'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/with-params/$id' | '/pets' | '/with-search-params'
-  id: '__root__' | '/' | '/with-params/$id' | '/pets/' | '/with-search-params/'
-  fileRoutesById: FileRoutesById
-}
-
-export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  WithParamsIdRoute: typeof WithParamsIdRoute
-  PetsIndexRoute: typeof PetsIndexRoute
-  WithSearchParamsIndexRoute: typeof WithSearchParamsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -123,33 +108,6 @@ const rootRouteChildren: RootRouteChildren = {
   PetsIndexRoute: PetsIndexRoute,
   WithSearchParamsIndexRoute: WithSearchParamsIndexRoute,
 }
-
-export const routeTree = rootRoute._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/",
-        "/with-params/$id",
-        "/pets/",
-        "/with-search-params/"
-      ]
-    },
-    "/": {
-      "filePath": "index.tsx"
-    },
-    "/with-params/$id": {
-      "filePath": "with-params/$id.tsx"
-    },
-    "/pets/": {
-      "filePath": "pets/index.tsx"
-    },
-    "/with-search-params/": {
-      "filePath": "with-search-params/index.tsx"
-    }
-  }
-}
-ROUTE_MANIFEST_END */
+export const routeTree = rootRouteImport
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
